@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Arcade Center</title>
+    <link rel="stylesheet" type="text/css" href="general.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <style>
+        @font-face {
+            font-family: "Montserrat";
+            src: url("Montserrat/Montserrat-Regular.ttf") format("truetype");
+        }
+
+        :root {
+            --top-bar-size: 15vh;
+            --button-background1: rgb(227, 173, 229);
+            --button-background2: rgb(248, 193, 236);
+            --text-colour: white;
+            --background-colour: #462255;
+        }
+
+        #top_bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--top-bar-size);
+            background: var(--shade-2);
+            overflow: hidden;
+            box-shadow: 0 0.1em 5px 0 rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        #logo_div {
+            width: 100%;
+            height: calc(var(--top-bar-size) - 1em);
+        }
+
+        #top_bar>a {
+            color: var(--background-color);
+            outline: none;
+            border: none;
+            display: block;
+            top: -2em;
+            text-decoration: none;
+            font-family: "Montserrat";
+        }
+
+        #top_bar>*:hover {
+            transition: 0.25s;
+            background: var(--shade-3);
+        }
+
+        #top_bar>* {
+            width: calc(100% / 5);
+            height: var(--top-bar-size);
+            transition: 0.25s;
+            float: left;
+            text-align: center;
+            font-weight: 900;
+            letter-spacing: 2px;
+            line-height: var(--top-bar-size);
+            white-space: nowrap;
+        }
+
+        #wrapper>#big {
+            width: calc(var(--top-bar-size) - 1em);
+            height: calc(var(--top-bar-size) - 1em);
+            position: relative;
+        }
+
+        #wrapper>#small {
+            display: block;
+            position: absolute;
+            width: calc(100% / 5);
+            top: calc(var(--top-bar-size) - 4em);
+            height: 4em;
+            text-align: center;
+            color: var(--background-color);
+        }
+
+        body {
+            margin-top: var(--top-bar-size);
+            color: white;
+        }
+
+        #bottom_bar {
+            position: relative;
+            top: 0;
+            left: 0;
+            background-color: var(--background);
+            width: 100%;
+            height: 10vh;
+            border-top: 1px solid grey;
+        }
+
+        #bottom {
+            position: relative;
+            height: 8vh;
+            width: 8vh;
+            padding: 0;
+            margin: 0;
+            float: left;
+        }
+
+        #copy {
+            float: right;
+            padding-top: 0;
+            position: relative;
+        }
+
+        #copy:hover {
+            color: var(--colour1)
+        }
+
+        button,
+        #update {
+            width: 150px;
+            height: 50px;
+            background-color: var(--button-background1);
+            position: relative;
+            color: var(--text-colour);
+        }
+
+        button:hover,
+        #update:hover {
+            background-color: var(--button-background2);
+        }
+
+        #profile_button {
+            float: right;
+            width: 150px;
+            height: 50px;
+            background-color: var(--button-background1);
+            left: 0;
+            position: relative;
+            margin: 5vh;
+            color: var(--text-colour);
+        }
+
+        #profile {
+            margin-top: 17vh;
+            left: 5vw;
+            width: 90vw;
+            height: calc(50px + 10vh);
+            border-radius: 100px
+        }
+
+        #select {
+            float: left;
+        }
+
+        #suggestions {
+            margin-left: 10vh;
+        }
+
+        #id_panels {
+            position: relative;
+            top: 0;
+            left: 10vw;
+            height: 60vh;
+            overflow: none;
+            margin: 0 auto;
+        }
+
+        .section {
+            background: rgb(226, 197, 211);
+            position: relative;
+            color: var(--shade-1);
+            border-radius: 10px;
+            box-shadow: 0.3em 0.2em 5px 0 rgba(0, 0, 0, 0.3) inset,
+                -0.3em -0.2em 16px 0 rgba(255, 255, 255, 0.9) inset,
+                0.1em 0.1em 5px 0 rgba(0, 0, 0, 0.05);
+            width: 45vw;
+            height: 75vh;
+            /* margin-top: 5vh; */
+            margin-bottom: 5vh;
+            text-align: center;
+            margin-left: 3vw;
+        }
+
+        img {
+            width: 30vw;
+        }
+
+        .sidebyside {
+            display: inline-block;
+            position: relative;
+            top: 0;
+            left: 0;
+        }
+
+        #topone {
+            width: 80vw;
+            margin-left: 5vw;
+            margin-top: 1vh;
+        }
+
+        #photo {
+            width: 15vh;
+            height: 15vh;
+            position: relative;
+            border-radius: 5em;
+            top: 15vh;
+        }
+
+        #logout {
+            top: 15vh;
+        }
+
+        #name {
+            position: relative;
+            top: 15vh;
+        }
+
+        #colleft,
+        #colright {
+            float: left;
+            text-align: left;
+            left: 0;
+            font-size: 25px;
+            top: 8vh;
+            position: relative;
+        }
+
+        #colleft {
+            margin-right: 5vw;
+        }
+
+        #update {
+            top: 15vh;
+        }
+
+        #acchead {
+            text-align: left;
+            margin-left: 5vh;
+            top: 0;
+        }
+
+        .inpright {
+            height: 15px;
+        }
+
+        #stats,
+        #prof {
+            float: left;
+        }
+
+        #screen {
+            display: inline-block;
+        }
+
+        #imgdiv {
+            width: 100%;
+            height: 10vh;
+        }
+
+        #stats {
+            width: 45vw;
+        }
+
+        #prof {
+            width: 45vw;
+        }
+
+        #background {
+                background-image: url("../images/arcade.jpg");
+                background-repeat: no-repeat;            
+        }
+    </style>
+</head>
+
+<body>
+    <nav class=" navbar navbar-dark bg-primary mb-4">
+        <div class="container">
+            <a href="/" class="navbar-brand"> Sisters' Arcade Welcomes you ! </a>
+            <a class="btn btn-secondary" href="profile.html">Profile</a>
+
+        </div>
+    </nav>
+    <div id="background"></div>
+    <div class="screen">
+        <div id="stats" class="section">
+            <h1 id="acchead"> Its Maria !</h1>
+            <img src = "../images/princess.jpg">
+            <br><br>
+            <br>
+            <h1 id="name"><br></h1>
+            <button>Play</button>
+        </div>
+        <div id="prof" class="section">
+            <h1 id="acchead">Its PacWoman !</h1>
+            <div id="game">
+                <img src="../images/pacw.png"><br><br>
+                <a href = "pacwoman.html">
+                    <button>
+                        Play
+                    </button>
+                </a>
+            </div>
+            
+        </div>
+    </div>
+
+</body>
+
+</html>
